@@ -1,0 +1,8 @@
+#vscode folder
+.vscode/*
+
+#common c++ compile formats
+*.exe
+*.pdb
+*.ilk
+*.obj
