@@ -61,5 +61,28 @@ int main()
     n2w::Numword(1000000000).getnum();
     n2w::Numword(1000000030).getnum();
     n2w::Numword(1878486865).getnum();
+
+    // testing templates
+    //max and min ints
+    n2w::Numword<int>(-2147483647).getnum();
+    n2w::Numword<int>(2147483647).getnum();
+
+    // unsigned
+    n2w::Numword<unsigned>(0U).getnum();
+    n2w::Numword<unsigned>(4000000000U).getnum();
+    n2w::Numword<unsigned>(4294967295U).getnum();
+
+    // long long
+    n2w::Numword<long long>(1LL).getnum();
+    n2w::Numword<long long>(5000000000LL).getnum();
+    n2w::Numword<long long>(-5000000000LL).getnum();
+
+    // unsigned long long
+    n2w::Numword<unsigned long long>(2ULL).getnum();
+    n2w::Numword<unsigned long long>(1000000000000ULL).getnum();
+
+    // edge cases
+    n2w::Numword<long long>(-999999999999LL).getnum();
+    n2w::Numword<unsigned long long>(999000111222333ULL).getnum();
     return 0;
 }
