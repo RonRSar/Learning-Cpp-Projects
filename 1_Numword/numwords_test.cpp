@@ -82,7 +82,7 @@ int main()
     n2w::Numword<unsigned long long>(1000000000000ULL).getnum();
 
     // edge cases
-    n2w::Numword<long long>(-999999999999LL).getnum();
-    n2w::Numword<unsigned long long>(999000111222333ULL).getnum();
+    n2w::Numword<long long>(-9223372036854775807LL).getnum();
+    n2w::Numword<unsigned long long>(18446744073709551615ULL).getnum();
     return 0;
 }
