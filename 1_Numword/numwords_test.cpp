@@ -1,5 +1,14 @@
 #include "numwords.h"
 
+/*  Right now this is an extremely simplistic & manual way of checking that
+    the numword library works correctly. If I were to expand this code in
+    the future, it would be difficult to tell if anything was broken.
+
+    A possible extension to this would be to use an existing testing library to
+    assert that the values are equal. It would be wise to make .getnum() a member
+    function that returns the numbers in words instead of a void function that
+    prints to the terminal.                                                     */
+    
 int main()
 {
     // temp obj + .getnum()
@@ -63,7 +72,7 @@ int main()
     n2w::Numword(1878486865).getnum();
 
     // testing templates
-    //max and min ints
+    // max and min ints
     n2w::Numword<int>(-2147483647).getnum();
     n2w::Numword<int>(2147483647).getnum();
 
