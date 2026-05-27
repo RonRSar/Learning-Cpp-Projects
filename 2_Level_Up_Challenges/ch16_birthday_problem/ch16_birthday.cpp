@@ -9,8 +9,7 @@
 #include <iostream>
 #include <chrono>
 #include <random>
-#include <vector>
-#include <algorithm>
+#include <cstring>
 
 // The Birthday Problem, main()
 // Summary: This application simulates the birthday problem a large number of times to reveal the probability of a birthday match in a groupd of a given number of people.
@@ -28,26 +27,24 @@ int main()
     {
         // Write your code here
         std::random_device rd;
-        std::mt19937 gen(rd());
-        std::vector<double> birthday_dist (366, 1.0/365.25); // probably of a day is 1/365.25
-        birthday_dist[59] = 0.25/365.25; // Feb 29th is the 60th day of the year
+        std::minstd_rand gen(rd());
+        std::vector<int> birthday_dist (366, 4); // probably of a day is 1/365.25
+        birthday_dist[59] = 1; // Feb 29th is the 60th day of the year
         std::discrete_distribution<> distrib(birthday_dist.begin(), birthday_dist.end());
 
-        std::vector<int> birthdays{};
         int trials{total}; // num of trials equals total
+        bool shared[366]{};
         do
         {
-            birthdays.clear();
+            std::memset(shared, false, sizeof(shared));
             for (int i = 0; i < n; i++)
             {
-                birthdays.push_back(distrib(gen));
-            }
-            std::sort(birthdays.begin(), birthdays.end());
-            for(int i = 1; i < birthdays.size(); i++){
-                if (birthdays[i-1] == birthdays[i]) {
+                int bday = distrib(gen);
+                if (shared[bday]) {
                     matches++;
                     break;
                 }
+                shared[bday] = true;
             }
             trials--;
         } while (trials > 0);
