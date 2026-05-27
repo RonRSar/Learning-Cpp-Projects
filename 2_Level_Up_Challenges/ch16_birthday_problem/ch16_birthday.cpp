@@ -29,7 +29,9 @@ int main()
         // Write your code here
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> distrib(1, 365);
+        std::vector<double> birthday_dist (366, 1.0/365.25); // probably of a day is 1/365.25
+        birthday_dist[59] = 0.25/365.25; // Feb 29th is the 60th day of the year
+        std::discrete_distribution<> distrib(birthday_dist.begin(), birthday_dist.end());
 
         std::vector<int> birthdays{};
         int trials{total}; // num of trials equals total
