@@ -20,7 +20,7 @@ int main()
     int n{}, matches{};
 
     std::cout << "Enter the number of people in the group: " << std::flush;
-    std::cin >> n;
+    while (n <= 0) std::cin >> n;
 
     if (n > 366)
         matches = total;
